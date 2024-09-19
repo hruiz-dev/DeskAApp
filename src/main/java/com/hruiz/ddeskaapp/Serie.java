@@ -1,21 +1,28 @@
-package com.hruiz.deskaapp;
+package com.hruiz.ddeskaapp;
 
-import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.table.DatabaseTable;
+import jakarta.persistence.*;
 
-@DatabaseTable(tableName = "series")
+@Entity
+@Table(name = "series")
 public class Serie {
 
-    @DatabaseField(generatedId = true)
-    private int id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    private Long id;
 
     private String nombre;
+
     private int capitulo;
+
     private String Url;
+
     private String estado;
+
     private String imagen;
 
-    public Serie(int id, String nombre, int capitulo, String url, String estado, String imagen) {
+    public Serie(Long id, String nombre, int capitulo, String url, String estado, String imagen) {
         this.id = id;
         this.nombre = nombre;
         this.capitulo = capitulo;
@@ -24,12 +31,8 @@ public class Serie {
         this.imagen = imagen;
     }
 
-    public int getId() {
-        return id;
-    }
+    public Serie() {
 
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getNombre() {
@@ -70,5 +73,13 @@ public class Serie {
 
     public void setImagen(String imagen) {
         this.imagen = imagen;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 }

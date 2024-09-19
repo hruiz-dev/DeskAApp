@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Users</title>
+</head>
+<body>
+<h1>Users</h1>
+<!--/*@thymesVar id="serie" type="com.hruiz.ddeskaapp.Serie"*/-->
+<form th:action="@{/series}" th:object="${serie}" method="post">
+    <input type="text" th:field="*{nombre}" placeholder="Nombre"/>
+    <input type="number" th:field="*{capitulo}" placeholder="Capítulo"/>
+    <input type="text" th:field="*{url}" placeholder="URL"/>
+    <input type="text" th:field="*{estado}" placeholder="Estado"/>
+    <input type="text" th:field="*{imagen}" placeholder="Imagen"/>
+    <button type="submit">Agregar Serie</button>
+</form>
+<ul>
+    <li th:each="series : ${series}">
+        <span th:text="${series.nombre}">Name</span> - <span th:text="${series.capitulo}">Email</span>
+    </li>
+</ul>
+</body>
+</html>
